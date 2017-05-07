@@ -1,0 +1,18 @@
+import "base.proto";
+import "articles_base.proto";
+message rent : TAuxDicArticle {}
+message search : TAuxDicArticle {}
+message flat : TAuxDicArticle {}
+message room : TAuxDicArticle {}
+message populate : TAuxDicArticle {}
+message neighbor : TAuxDicArticle {}
+message studio : TAuxDicArticle {}
+message rent_wrong : TAuxDicArticle {}
+message area : TAuxDicArticle {}
+message like : TAuxDicArticle {}
+message numeric : TAuxDicArticle {}
+message negation : TAuxDicArticle {}
+message resident : TAuxDicArticle {}
+message flat_num : TAuxDicArticle {}
+message time : TAuxDicArticle {}
+message month : TAuxDicArticle {}

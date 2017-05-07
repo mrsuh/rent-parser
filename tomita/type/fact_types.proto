@@ -1,0 +1,27 @@
+import "base.proto";
+import "facttypes_base.proto";
+
+message FactRealty: NFactType.TFact
+    {
+        required string Type = 1;
+    }
+
+message FactRent: NFactType.TFact
+    {
+        required string Type = 1;
+    }
+
+message FactNeighbor: NFactType.TFact
+    {
+        required string Type = 1;
+    }
+
+message FactWrong: NFactType.TFact
+    {
+        required string Wrong = 1;
+    }
+
+message FactError: NFactType.TFact
+    {
+        required string Error = 1;
+    }

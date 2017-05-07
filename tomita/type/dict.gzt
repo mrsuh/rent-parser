@@ -1,0 +1,243 @@
+encoding "utf8";               // указываем кодировку, в которой написан этот файл
+
+import "base.proto";           // подключаем описания protobuf-типов (TAuxDicArticle и прочих)
+import "articles_base.proto";  // Файлы base.proto и articles_base.proto встроены в компилятор.
+                               // Их необходимо включать в начало любого gzt-словаря.
+import "kwtypes_my.proto";
+import "fact_types.proto";
+
+TAuxDicArticle "article_realty"
+    {
+    key = {"tomita:article/realty.cxx" type=CUSTOM}
+    }
+
+TAuxDicArticle "article_rent"
+    {
+    key = {"tomita:article/rent.cxx" type=CUSTOM}
+    }
+
+TAuxDicArticle "article_neighbor"
+    {
+    key = {"tomita:article/neighbor.cxx" type=CUSTOM}
+    }
+
+TAuxDicArticle "article_resident"
+    {
+    key = {"tomita:article/resident.cxx" type=CUSTOM}
+    }
+
+TAuxDicArticle "article_wrong"
+    {
+    key = {"tomita:article/wrong.cxx" type=CUSTOM}
+    }
+
+TAuxDicArticle "article_error"
+    {
+    key = {"tomita:article/error.cxx" type=CUSTOM}
+    }
+
+search "искать"
+{
+    key = "искать"
+    key = "поиск"
+    key = "поисках"
+    key = "разыскивать"
+    key = "разыскивается"
+    key = "подыскивать"
+    key = "найти"
+    key = "ищется"
+}
+
+// квартира
+flat "квартира"
+{
+    key = "квартира"
+    key = "квртира"
+    key = "квртра"
+    key = "квартра"
+    key = "квартирка"
+    key = "гнёздышко"
+    key = "гнездышко"
+    key = "гнездо"
+    key = "кваритра"
+    key = "апартаменты"
+    lemma= "квартира"
+}
+
+flat "_квартира"
+{
+    key = "кв"
+    key = "ккв"
+    key = "шка"
+    key = "кк"
+    key = "кв-ру"
+    key = "кв-ра"
+    mainword = 2
+    lemma= "квартира"
+}
+
+flat_num "однушка"
+{
+    key="однушка"
+    key="двушка"
+    key="трешка"
+    key="трёшка"
+    key="еврооднушка"
+    key="евроднушка"
+    key="евродвушка"
+    key="евротрешка"
+    key="евротрёшка"
+}
+
+studio "студия"
+{
+  key = "студия"
+}
+
+// комната
+room "комната"
+{
+    key = "комната"
+    key = "комнатка"
+    key = "комнатища"
+}
+
+rent "сдать"
+{
+    key = "здать"
+    key = "здам"
+    key = "сдать"
+    key = "сдавать"
+    key = "сдаваться"
+    key = "сдаем"
+    key = "освободить"
+    key = "освободиться"
+    key = "освобождаются"
+    key = "освобождается"
+    key = "в аренду"
+}
+
+populate "заселять"
+{
+    key = "заселять"
+    key = "заселить"
+    key = "подселить"
+    key = "подселять"
+}
+
+neighbor "сосед"
+{
+    key = "сосед"
+    key = "соседка"
+}
+
+resident "жилец"
+{
+    key = "вместо себя"
+    key = "на подселение"
+    key = "жилец"
+    key = "жильцы"
+    key = "жильцов"
+    key = "граждане"
+    key = "гражданин"
+    key = "девушка"
+    key = "парень"
+    key = "житель"
+    key = "квартирант"
+    key = "обитатель"
+    key = "постоялец"
+    key = "съемщик"
+    key = "обыватель"
+    key = "постоялец"
+}
+
+time "время"
+{
+    key = "секунда"
+    key = "минута"
+    key = "час"
+    key = "день"
+    key = "неделя"
+    key = "месяц"
+    key = "год"
+}
+
+month "месяц"
+{
+    key = "январь"
+    key = "февраль"
+    key = "март"
+    key = "апрель"
+    key = "май"
+    key = "июнь"
+    key = "июль"
+    key = "август"
+    key = "сентябрь"
+    key = "октябрь"
+    key = "ноябрь"
+    key = "декабрь"
+}
+
+rent_wrong "снять"
+{
+    key = "снять"
+    key = "снимать"
+    key = "сниматься"
+    key = "нужна"
+    key = "нужен"
+    key = "нужно"
+    key = "нуждаюсь"
+    key = "подселюсь"
+    key = "съем"
+    key = "арендовать"
+    key = "подселиться"
+    key = "аренда"
+    key = "требуется"
+    key = "требуеться"
+    key = "заселиться"
+    key = "заселить"
+}
+
+area "жилье"
+{
+    key="жилье"
+    key="желье"
+    key="жилище"
+    key="дом"
+    key = "переехать"
+}
+
+like "нравится"
+{
+    key="нравиться"
+    key="понравиться"
+}
+
+negation "отрицание"
+{
+    key="не"
+}
+
+numeric "цифры"
+{
+    key="1"
+    key="2"
+    key="3"
+    key="4"
+    key="5"
+    key="6"
+    key="7"
+    key="8"
+    key="9"
+    key="10"
+    key="один"
+    key="два"
+    key="три"
+    key="четыре"
+    key="пять"
+    key="шесть"
+    key="семь"
+    key="восемь"
+    key="девять"
+    key="десять"
+}
