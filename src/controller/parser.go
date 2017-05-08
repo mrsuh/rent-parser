@@ -3,17 +3,17 @@ package controller
 import (
 	"github.com/valyala/fasthttp"
 	"encoding/json"
-	"project/parser/contact"
-	"project/parser/price"
-	"project/parser/area"
-	parsetype "project/parser/type"
+	"rent-parser/src/parser/contact"
+	"rent-parser/src/parser/area"
+	"rent-parser/src/parser/price"
+	parsetype "rent-parser/src/parser/type"
 )
 
 type Response struct {
-	Type []string `json:"type"`
-	Contact []string `json:"contact"`
-	Area []string `json:"area"`
-	Price []string `json:"price"`
+	Type int `json:"type"`
+	Contact []string `json:"phone"`
+	Area float32 `json:"area"`
+	Price int `json:"price"`
 }
 
 func Parse(ctx *fasthttp.RequestCtx) {
@@ -23,10 +23,10 @@ func Parse(ctx *fasthttp.RequestCtx) {
 
 	body := string(ctx.PostBody())
 
-	chan_type := make(chan []string)
+	chan_type := make(chan int)
 	chan_contact := make(chan []string)
-	chan_area := make(chan []string)
-	chan_price := make(chan []string)
+	chan_area := make(chan float32)
+	chan_price := make(chan int)
 
 	go parsetype.Parse(body, chan_type)
 	go contact.Parse(body, chan_contact)

@@ -1,3 +1,7 @@
-server_host: 127.0.0.1
-server_port: 8080
-parser_bin: '/path/to/bin'
+server.host: '127.0.0.1'
+server.port: '9080'
+tomita.bin: '/path/to/bin/tomita'
+tomita.conf.type: '/path/to/tomita/type/config.proto'
+tomita.conf.contact: '/path/to/tomita/contact/config.proto'
+tomita.conf.area: '/path/to/tomita/area/config.proto'
+tomita.conf.price: '/path/to/tomita/price/config.proto'

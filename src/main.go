@@ -2,19 +2,22 @@ package main
 
 import (
 	"github.com/valyala/fasthttp"
-	"project/controller"
+	config "github.com/mrsuh/cli-config"
+	"rent-parser/src/controller"
 	"fmt"
 	"log"
-	"project/config"
 )
 
 func requestHandler(ctx *fasthttp.RequestCtx) {
 	switch string(ctx.Path()) {
 	case "/parse":
+		if !ctx.IsPost() {
+			ctx.Error("Method not allowed", fasthttp.StatusMethodNotAllowed)
+		}
 		controller.Parse(ctx)
 		break
 	default:
-		ctx.Error("Unsupported path", fasthttp.StatusNotFound)
+		ctx.Error("Not found", fasthttp.StatusNotFound)
 	}
 }
 
@@ -37,8 +40,4 @@ func main() {
 	if server_err != nil {
 		log.Fatal(server_err)
 	}
-
-	//str := "89992144342 89992144347"
-	//fmt.Println("init")
-	//parser.ParseContact(str)
 }

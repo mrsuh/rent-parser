@@ -23,9 +23,11 @@ func NewTomita(bin string, config string) *Tomita {
 
 func (tomita Tomita) Parse(text string) string {
 	command := exec.Command(tomita.bin, tomita.config)
-	var out bytes.Buffer
+	var Stdout bytes.Buffer
+	var Stderr bytes.Buffer
 	command.Stdin = strings.NewReader(text)
-	command.Stdout = &out
+	command.Stdout = &Stdout
+	command.Stderr = &Stderr
 
 	err := command.Run()
 	command.Start()
@@ -34,5 +36,5 @@ func (tomita Tomita) Parse(text string) string {
 		log.Fatal(err)
 	}
 
-	return out.String()
+	return Stdout.String()
 }
