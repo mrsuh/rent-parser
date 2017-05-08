@@ -1,0 +1,9 @@
+import "base.proto";
+import "facttypes_base.proto";
+
+message FactPrice: NFactType.TFact
+    {
+        optional string Full = 1;
+        optional string Short = 2;
+        optional string Half = 3;
+    }

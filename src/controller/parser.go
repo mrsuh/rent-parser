@@ -2,47 +2,38 @@ package controller
 
 import (
 	"github.com/valyala/fasthttp"
-	"parser"
-	"fmt"
+	"encoding/json"
+	"rent-parser/src/parser/contact"
+	"rent-parser/src/parser/area"
+	"rent-parser/src/parser/price"
+	parsetype "rent-parser/src/parser/type"
 )
 
-func parseType(par *parser.Parser, body string, req chan string) {
-	r := par.ParseType(body)
-	req <- r
+type Response struct {
+	Type int `json:"type"`
+	Contact []string `json:"phone"`
+	Area float32 `json:"area"`
+	Price int `json:"price"`
 }
 
-func parseArea(par *parser.Parser, body string, req chan string) {
-	r := par.ParseArea(body)
-	req <- r
-}
-
-func parseContact(par *parser.Parser, body string, req chan string) {
-	r := par.ParseContact(body)
-	req <- r
-}
-
-func parsePrice(par *parser.Parser, body string, req chan string) {
-	r := par.ParsePrice(body)
-	req <- r
-}
 func Parse(ctx *fasthttp.RequestCtx) {
+
 	ctx.SetContentType("application/json")
 	ctx.SetStatusCode(fasthttp.StatusOK)
 
 	body := string(ctx.PostBody())
 
-	chan_type := make(chan string)
-	chan_contact := make(chan string)
-	chan_area := make(chan string)
-	chan_price := make(chan string)
+	chan_type := make(chan int)
+	chan_contact := make(chan []string)
+	chan_area := make(chan float32)
+	chan_price := make(chan int)
 
-	p := parser.NewParser()
+	go parsetype.Parse(body, chan_type)
+	go contact.Parse(body, chan_contact)
+	go area.Parse(body, chan_area)
+	go price.Parse(body, chan_price)
 
-	go parseType(p, body, chan_type)
-	go parseContact(p, body, chan_contact)
-	go parseArea(p, body, chan_area)
-	go parsePrice(p, body, chan_price)
-
-	// then override already written body
-	ctx.SetBody([]byte(fmt.Sprint(<-chan_type, <-chan_contact, <-chan_area, <-chan_price)))
+	response := Response{<-chan_type, <-chan_contact, <-chan_area, <-chan_price}
+	json_res, _ := json.Marshal(response)
+	ctx.SetBody(json_res)
 }

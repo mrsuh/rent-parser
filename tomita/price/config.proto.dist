@@ -1,0 +1,22 @@
+encoding "utf8";
+
+TTextMinerConfig {
+
+  Dictionary = "/path/to/tomita/price/dict.gzt";
+
+  Output = {
+        Format = xml;
+  }
+
+  PrettyOutput = "pretty.html"
+  PrintTree="tree.txt";
+  PrintRules="rules.txt";
+
+  Articles = [
+        { Name = "article_price" }
+         ]
+
+  Facts = [
+        { Name = "FactPrice" }
+          ]
+}

@@ -1,0 +1,31 @@
+encoding "utf8";
+
+TTextMinerConfig {
+
+  Dictionary = "/path/to/tomita/type/dict.gzt";
+
+  Output = {
+        Format = xml;
+  }
+
+  Articles = [
+        { Name = "article_realty" },
+        { Name = "article_rent" },
+        { Name = "article_neighbor" },
+        { Name = "article_resident" },
+        { Name = "article_wrong" },
+        { Name = "article_error" }
+         ]
+
+  Facts = [
+        { Name = "FactRealty" },
+        { Name = "FactRent" },
+        { Name = "FactNeighbor" },
+        { Name = "FactWrong" },
+        { Name = "FactError" }
+          ]
+
+//    PrettyOutput = "pretty.html"
+//    PrintTree="tree.txt";
+//    PrintRules="rules.txt";
+}
