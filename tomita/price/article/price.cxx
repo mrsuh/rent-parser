@@ -10,7 +10,7 @@ P1 -> AnyWord<wff="вместе"> AnyWord<wff="с">;
 P2 -> AnyWord<wff="(\\+|и)">;
 Plus -> P1 | P2;
 
-Price -> AnyWord<wff="цена">;
+Price -> AnyWord<wff="цена|оплата">;
 
 AllInclude -> AnyWord<wff="всё"> AnyWord<wff="включе(н|нн)о">;
 
