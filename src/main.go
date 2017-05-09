@@ -11,10 +11,14 @@ import (
 func requestHandler(ctx *fasthttp.RequestCtx) {
 	switch string(ctx.Path()) {
 	case "/parse":
+
 		if !ctx.IsPost() {
 			ctx.Error("Method not allowed", fasthttp.StatusMethodNotAllowed)
+			break
 		}
+
 		controller.Parse(ctx)
+
 		break
 	default:
 		ctx.Error("Not found", fasthttp.StatusNotFound)
