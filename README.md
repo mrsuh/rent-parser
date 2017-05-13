@@ -5,8 +5,8 @@
 ## Installation
 ```
 sh bin/deploy
-set parameters in config/config.yml
-set parameter 'Dictionary' in tomita/{area, contact, price, type}/config.proto
+set parameters in a config/config.yml
+set parameter 'Dictionary' in a tomita/{area, contact, price, type}/config.proto
 ```
 
 ## Compilation
