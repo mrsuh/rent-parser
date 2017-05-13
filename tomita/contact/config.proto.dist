@@ -8,10 +8,6 @@ TTextMinerConfig {
         Format = xml;
     }
 
-    PrettyOutput = "pretty.html"
-    PrintTree="tree.txt";
-    PrintRules="rules.txt";
-
     Articles = [
        { Name = "article_contact" }
     ]
