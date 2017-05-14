@@ -21,7 +21,7 @@ bin/main /config/config.yml
 
 ## Use
 ```sh
--X POST -d 'сдаю двушку 50.4 кв.м за 30 тыс в месяц. телефон + 7 999 999 9999' 'http://localhost:/parse'
+curl -X POST -d 'сдаю двушку 50.4 кв.м за 30 тыс в месяц. телефон + 7 999 999 9999' 'http://localhost:/parse'
 {"type":2,"phone":["9999999999"],"area":50.4,"price":30000}
 ```
 
