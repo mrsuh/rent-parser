@@ -4,14 +4,14 @@
 
 ## Installation
 ```
-sh bin/deploy
+sh bin/deploy.sh
 set parameters in a config/config.yml
 set parameters in a tomita/{area, contact, price, type}/config.proto
 ```
 
 ## Compilation
 ```sh
-sh bin/compile
+sh bin/compile.sh
 ```
 
 ## Run
