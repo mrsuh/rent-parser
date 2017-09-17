@@ -1,7 +1,0 @@
-import "base.proto";
-import "facttypes_base.proto";
-
-message FactArea: NFactType.TFact
-    {
-       required string Area = 1;
-    }

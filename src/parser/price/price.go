@@ -86,20 +86,23 @@ func normalize(text string) string {
 		return ""
 	}
 
-	re2 := regexp.MustCompile(`/(публиковать.*|правила темы.*|[+\(\)-])/ui`)
+	re2 := regexp.MustCompile(`(?i)(публиковать|варианты .* нашего сайта|правила темы|сайт)(.|\n)*`)
 	byte_text = re2.ReplaceAll(byte_text, []byte(""))
+
+	re3 := regexp.MustCompile(`(?i)http(s):(\w|\/|\.)*`)
+	byte_text = re3.ReplaceAll(byte_text, []byte(""))
 
 	byte_text = []byte(strings.Replace(string(byte_text), `\n`, "\n", -1))
 	byte_text = []byte(strings.Replace(string(byte_text), "-", " ", -1))
 
-	re3 := regexp.MustCompile(`(\d+)(\s+){0,5}[^a-zA-Zа-яА-Я\d](\s+){0,5}(\d+)`)
-	byte_text = re3.ReplaceAll(byte_text, []byte("$1.$4"))
-
-	re4 := regexp.MustCompile(`([-\d=\+.\!?\\\\])([а-яеёa-z])`)
+	re4 := regexp.MustCompile(`([\d-:\/=\+.\!?\\\\])([а-яеёa-z-:\/=\+.\!?\\\\])`)
 	byte_text = re4.ReplaceAll(byte_text, []byte("$1 $2"))
 
-	re5 := regexp.MustCompile(`([а-яеёa-z])([-\d=\+.\!?\\\\])`)
+	re5 := regexp.MustCompile(`([а-яеёa-z-:\/=\+.\!?\\\\])([\d-:\/=\+.\!?\\\\])`)
 	byte_text = re5.ReplaceAll(byte_text, []byte("$1 $2"))
+
+	re6 := regexp.MustCompile(`(\d+)(\s+){0,5}[^a-zA-Zа-яА-Я\d](\s+){0,5}(\d+)`)
+	byte_text = re6.ReplaceAll(byte_text, []byte("$1.$4"))
 
 	return string(byte_text)
 }

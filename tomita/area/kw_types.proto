@@ -1,4 +1,0 @@
-import "base.proto";
-import "articles_base.proto";
-message prefix : TAuxDicArticle {}
-message name : TAuxDicArticle {}
