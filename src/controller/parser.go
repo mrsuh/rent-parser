@@ -19,13 +19,13 @@ func Parse(ctx *fasthttp.RequestCtx) {
 
 	body := string(ctx.PostBody())
 
-	chan_type := make(chan int)
-	chan_price := make(chan int)
+	chanType := make(chan int)
+	chanPrice := make(chan int)
 
-	go parsetype.Parse(body, chan_type)
-	go price.Parse(body, chan_price)
+	go parsetype.Parse(body, chanType)
+	go price.Parse(body, chanPrice)
 
-	response := Response{<-chan_type, <-chan_price}
+	response := Response{<-chanType, <-chanPrice}
 	json_res, _ := json.Marshal(response)
 	ctx.SetBody(json_res)
 }

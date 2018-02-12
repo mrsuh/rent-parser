@@ -1,7 +1,5 @@
 # Rent parser
 
-[![Build Status](https://travis-ci.org/mrsuh/rent-parser.svg?branch=master)](https://travis-ci.org/mrsuh/rent-parser)
-
 ## Installation
 ```
 sh bin/deploy.sh
