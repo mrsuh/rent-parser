@@ -19,6 +19,14 @@ func Parse(ctx *fasthttp.RequestCtx) {
 
 	body := string(ctx.PostBody())
 
+	if !parsetype.PreValid(body) {
+		response := Response{parsetype.WRONG, -1}
+		json_res, _ := json.Marshal(response)
+		ctx.SetBody(json_res)
+
+		return
+	}
+
 	chanType := make(chan int)
 	chanPrice := make(chan int)
 
