@@ -1,7 +1,0 @@
-import "base.proto";
-import "facttypes_base.proto";
-
-message FactContact: NFactType.TFact
-    {
-       required string Contact = 1;
-    }

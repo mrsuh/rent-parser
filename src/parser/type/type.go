@@ -114,9 +114,43 @@ func Parse(text string, response chan int) {
 	response <- getByXML(tom.Parse(text))
 }
 
+func PreValid(rawText string) bool {
+
+	normalizedText := normalize(rawText)
+
+	rawByteText := []byte(rawText)
+	normalizedByteText := []byte(normalizedText)
+
+	flats := []string{
+		"кв",
+		"ком",
+		"одн",
+		"дву",
+		"тр(ё|e)",
+		"студ",
+	}
+
+	reFlat := regexp.MustCompile(fmt.Sprintf(`(?i).*(%s).*`, strings.Join(flats, "|")))
+	if !reFlat.Match(normalizedByteText) {
+		return false
+	}
+
+	vkId := regexp.MustCompile(`(?i)^\[id\d+`)
+	if vkId.Match(rawByteText) {
+		return false
+	}
+
+	search := regexp.MustCompile(`(?i)(сним|ищ)(у|ем)[\w]*[^\w](кварт|комн|одн(ок|ушк)|дву(хк|шк)|тр[её](хк|шк))`)
+	if search.Match(normalizedByteText) {
+		return false
+	}
+
+	return true
+}
+
 func normalize(raw_text string) string {
 
-	byte_text := []byte(raw_text)
+	byte_text := []byte(strings.TrimSpace(raw_text))
 
 	re := regexp.MustCompile(`\?\W{0,10}$`)
 
