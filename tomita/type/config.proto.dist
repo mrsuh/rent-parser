@@ -2,7 +2,7 @@ encoding "utf8";
 
 TTextMinerConfig {
 
-  Dictionary = "/path/to/tomita/type/dict.gzt";
+  Dictionary = "/go/src/rent-parser/tomita/type/dict.gzt";
 
   Output = {
         Format = xml;
