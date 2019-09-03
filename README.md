@@ -17,7 +17,7 @@ curl -X POST -d 'сдаю двушку за 30 тыс в месяц' 'http://127
 
 ## Compilation from source code
 
-### Generate configs and load (Yandex Tomita parser)[https://github.com/yandex/tomita-parser]
+### Generate configs and load [Yandex Tomita parser](https://github.com/yandex/tomita-parser)
 ```bash
 sh bin/deploy.sh
 ```
